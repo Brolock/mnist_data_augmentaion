@@ -1,12 +1,14 @@
-from mnist import MNIST
 import numpy as np
+
+import sys
+sys.path.insert(0, '/home/brolock/Work/mnist_augmentation/data')
+import mnist
 
 #TODO Make my own Mnist loader
 def load_mnist(path_to_mnist):
     ''' Load training and testing sets, merge them and return the tuple (data, labels)'''
-    mnist_loader = MNIST(path_to_mnist, return_type='numpy')
-    data_train, labels_train = mnist_loader.load_training()
-    data_test, labels_test = mnist_loader.load_testing()
+    data_train, labels_train = mnist.load_training()
+    data_test, labels_test = mnist.load_testing()
 
     data_full = np.concatenate((data_train, data_test))
     labels_full = np.concatenate((labels_train, labels_test))
