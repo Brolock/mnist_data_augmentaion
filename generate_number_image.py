@@ -20,10 +20,6 @@ def generate_number_image(number, merge_digits_function,
     for transformation in final_image_transformations:
         merged_digits_image = transformation(merged_digits_image)
 
-    import matplotlib.pyplot as plt
-    plt.imshow(merged_digits_image, cmap="gray")
-    plt.show()
-
     return merged_digits_image
 
 def generate_numbers(batch_size, number_length):

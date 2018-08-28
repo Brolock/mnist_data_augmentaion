@@ -22,3 +22,8 @@ def center_to_shape(image, shape, background_color=0):
 
     return res
 
+def grayscale_to_color(image, black_color, white_color):
+    slope = (white_color - black_color) / 255
+    colored_array = np.full((image.shape[0], image.shape[1], 3), slope)
+
+    return colored_array * image[:, :, None] + black_color
