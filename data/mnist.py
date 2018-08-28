@@ -46,15 +46,14 @@ def load(path_images, path_labels):
     with gzip.open(path_labels, 'rb') as f:
         _, _= struct.unpack(">II", f.read(8))
 
-        labels = array("B", f.read())
+        labels = array('B', f.read())
 
     with gzip.open(path_images, 'rb') as f:
         _, size, rows, cols = struct.unpack(">IIII", f.read(16))
 
+        # I don't understand why this is not working
+        #images = np.fromfile(f, dtype=np.uint8).reshape(size, rows, cols)
         image_data = array("B", f.read())
-
-    images = np.full((size, rows * cols), 0)
-    for i in range(size):
-        images[i][:] = image_data[i * rows * cols:(i + 1) * rows * cols]
+    images = np.array(image_data).reshape(size, rows, cols)
 
     return images, labels

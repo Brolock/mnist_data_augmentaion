@@ -4,7 +4,6 @@ import sys
 sys.path.insert(0, '/home/brolock/Work/mnist_augmentation/data')
 import mnist
 
-#TODO Make my own Mnist loader
 def load_mnist(path_to_mnist):
     ''' Load training and testing sets, merge them and return the tuple (data, labels)'''
     data_train, labels_train = mnist.load_training()
@@ -16,10 +15,10 @@ def load_mnist(path_to_mnist):
     return (data_full, labels_full)
 
 def get_digits_from_dataset(digits, label_to_indices, mnist_data):
-    ''' Randomly pick digits from image set and reshape image to 28x28 '''
+    ''' Randomly pick digits from image set '''
     digit_indices = np.array([np.random.choice(label_to_indices[digit])
                         for digit in digits])
-    return np.array(mnist_data[digit_indices].reshape(len(digit_indices), 28, 28))
+    return np.array(mnist_data[digit_indices])
 
 def get_mnist_dict():
     ''' Returns mnist images and a dict containing the indices of each digit '''
