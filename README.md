@@ -1,11 +1,22 @@
 ##Requirments
-python3
-mnist dataset : http://yann.lecun.com/exdb/mnist/
-mnist lib (more details on that, or just copy what's necessary)
-python libs: numpy, matplotlib, termcolor, sys
+It is advised to use a virtual environment to run this demo.
+The set of instructions given here are using the Python Env Wrapper Pew
+https://github.com/berdario/pew
+A basic version of python3 and pip3 is necessary for this to work
+Atleast 12MB of RAM for the mnist dataset to fit
 
+##Instructions
 
-Load all the data to memory so atleast 12MB of RAM
+sudo pip3 install pew
+pew new  -i numpy -i matplotlib -i scikit-image -i termcolor data_augmentation
+sudo apt install python3-tk
+
+#Run
+./single_image_generator.py --number 31456 --min_max 5 15 --image_width 150
+
+Should display an image of the number 31456 with the format 28x150 each digit
+is separated by 2 to 15 pixels. Have fun tweaking the parameters.
+
 
 ##Tests
 --Merging mnist arrays
@@ -17,7 +28,3 @@ Load all the data to memory so atleast 12MB of RAM
 
 
 --Perf?
-
-##Question
-Should max_dist be included (if we have min dist = 0 max_dist = 10 is it from 0 to 9 pixel distance or 0 to 10)
-Is it possible that min_dist and max_dist are negative (numbers are intertwined)

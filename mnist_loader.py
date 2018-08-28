@@ -1,7 +1,7 @@
 import numpy as np
 
 import sys
-sys.path.insert(0, '/home/brolock/Work/mnist_augmentation/data')
+sys.path.insert(0, 'data')
 import mnist
 
 def load_mnist(path_to_mnist):
