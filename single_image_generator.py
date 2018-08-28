@@ -27,6 +27,10 @@ if __name__ == "__main__":
     center_function = lambda image: center_to_shape(image,
             (28, int(args.image_width)), background_color=0)
 
+    from digit_transformations import rotate
+    rotato = lambda images: rotate(images, angle=90, reshape=True)
+
     generate_number_image(args.number,
             merge_digits_function,
-            final_image_transformations=[center_function])
+            final_image_transformations=[center_function],
+            digit_wise_transformations=[rotato])
