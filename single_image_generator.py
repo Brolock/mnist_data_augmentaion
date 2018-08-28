@@ -30,7 +30,11 @@ if __name__ == "__main__":
     from digit_transformations import rotate
     rotato = lambda images: rotate(images, angle=90, reshape=True)
 
-    generate_number_image(args.number,
+    image = generate_number_image(args.number,
             merge_digits_function,
             final_image_transformations=[center_function],
             digit_wise_transformations=[rotato])
+
+    import matplotlib.pyplot as plt
+    plt.imshow(image, cmap="gray")
+    plt.show()

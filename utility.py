@@ -5,11 +5,13 @@ import numpy as np
 def convert_to_list(number):
     """ Convert input to a list of digits (works with int and string) """
     type_number = type(number)
-    if type_number is list or type_number is np.ndarray:
+    if type_number is np.ndarray:
         return number
+    if type_number is list:
+        return np.array(number)
     elif type_number is str:
         return [int(digit) for digit in number]
-    elif type_number is int:
+    elif type_number is int or type_number is np.int64:
         return [int(digit) for digit in str(number)]
     else:
         cprint("Type: {} unsupported for number, please use an integer, "
