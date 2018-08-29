@@ -33,6 +33,10 @@ def generate_image_batch(batch_size, number_length,
                      merge_digits_function,
                      final_image_transformations=[],
                      digit_wise_transformations=[]):
+    '''
+    Generate batch_size random numbers images with number_length digits
+    Returns a tuple of the images and the digits generated
+    '''
     data, label_to_indices = get_mnist_dict()
 
     numbers = generate_numbers(batch_size, number_length)
@@ -55,4 +59,4 @@ def generate_image_batch(batch_size, number_length,
                                single_image in merged_digits_images])
 
 
-    return merged_digits_images
+    return merged_digits_images, numbers
