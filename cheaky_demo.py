@@ -28,13 +28,14 @@ if __name__ == "__main__":
             (28, int(args.image_width)), background_color=0)
 
     from digit_transformations import rotate
-    rotato = lambda images: rotate(images, angle=90, reshape=True)
+    rotato = lambda images: rotate(images, angle=-90, max_angle= 90)
 
     from image_transformation import grayscale_to_color, salt_and_pepper, random_noise
     import numpy as np
-    violet = np.array([72, 61, 139])
-    coral = np.array([255, 127, 80])
-    to_color = lambda image: grayscale_to_color(image, violet, coral)
+    red = np.array([210, 21, 0])
+    green = np.array([0, 51, 25])
+    to_color = lambda image: grayscale_to_color(image, black_color=green,
+                                                white_color=red)
 
     grayscale_random_noise = lambda image: random_noise(image, min_color=[0], max_color=[255], amount=0.2)
 

@@ -1,11 +1,20 @@
 import numpy as np
 import utility
+from sys import exit
 
 from mnist_loader import get_mnist_dict, get_digits_from_dataset
 
 def generate_number_image(number, merge_digits_function,
                           final_image_transformations=[],
                           digit_wise_transformations=[]):
+    '''
+    -Generates an image of the number given
+    -Applies transformations in digit_wise_transformations to single digit
+    images extracted from mnist.
+    -Merges the digits images into one using the merge_digits_function
+    -Applies transformations in final_image_transofrmations to the merged
+    digits image
+    '''
     data, label_to_indices = get_mnist_dict()
 
     number = utility.convert_to_list(number)
@@ -23,11 +32,17 @@ def generate_number_image(number, merge_digits_function,
     return merged_digits_image
 
 def generate_numbers(batch_size, number_length):
-    min_val, max_val = (10**(number_length - 1),
-                        10**number_length - 1)
+    # It is slightly faster to generate an integer and then split it into
+    # digits than calling number_length times the random function
+    if number_length < 19:
+        min_val, max_val = (10**(number_length - 1),
+                            10**number_length - 1)
 
-    numbers = np.random.random_integers(min_val, max_val, batch_size)
-    return np.array([utility.convert_to_list(number) for number in numbers])
+        numbers = np.random.random_integers(min_val, max_val, batch_size)
+        return np.array([utility.convert_to_list(number) for number in numbers])
+    else:
+        return np.array([np.random.randint(0, 10, number_length)
+                         for _ in range(batch_size)])
 
 def generate_image_batch(batch_size, number_length,
                      merge_digits_function,
@@ -36,6 +51,11 @@ def generate_image_batch(batch_size, number_length,
     '''
     Generate batch_size random numbers images with number_length digits
     Returns a tuple of the images and the digits generated
+    -Applies transformations in digit_wise_transformations to single digit
+    images extracted from mnist.
+    -Merges the digits images into batch_size ones using the merge_digits_function
+    -Applies transformations in final_image_transofrmations to the merged
+    digits images
     '''
     data, label_to_indices = get_mnist_dict()
 

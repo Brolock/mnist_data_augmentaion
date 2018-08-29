@@ -23,6 +23,9 @@ if __name__ == "__main__":
 
     parser.add_argument("--rotation_angle", default=0,
                         help="Digit wise rotation angle (in degrees)")
+    parser.add_argument("--max_range_angle", default=None,
+                        help="If set, will be used in pair with --rotation_angle "
+                        "to make the angle range the numbers will take")
 
     args = parser.parse_args()
     # Function used to merge digit images together
@@ -36,7 +39,8 @@ if __name__ == "__main__":
             (28, image_width), background_color=0)
 
     angle = int(args.rotation_angle)
-    rotato = lambda images: rotate(images, angle=angle, reshape=True)
+    max_angle = int(args.max_range_angle) if args.max_range_angle else None
+    rotato = lambda images: rotate(images, angle=angle, max_angle=max_angle)
 
     batch_size = int(args.batch_size)
     nb_digits = int(args.number_of_digits)
