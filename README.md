@@ -8,7 +8,7 @@ Atleast 12MB of RAM for the mnist dataset to fit
 ##Instructions
 
 sudo pip3 install pew
-pew new  -i numpy -i matplotlib -i scikit-image -i termcolor data_augmentation
+pew new --python=pypy -i numpy -i matplotlib -i scikit-image -i termcolor data_augmentation
 sudo apt install python3-tk
 
 #Run
