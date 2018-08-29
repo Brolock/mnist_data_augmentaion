@@ -6,7 +6,6 @@ from generate_number_image import generate_number_image
 from digits_merge import optimal_horizontal_merge
 from image_transformation import center_to_shape
 
-import utility
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -28,13 +27,23 @@ if __name__ == "__main__":
     center_function = lambda image: center_to_shape(image,
             (28, int(args.image_width)), background_color=0)
 
+    from digit_transformations import rotate
+    rotato = lambda images: rotate(images, angle=90, reshape=True)
+
+    from image_transformation import grayscale_to_color, salt_and_pepper, random_noise
+    import numpy as np
+    violet = np.array([72, 61, 139])
+    coral = np.array([255, 127, 80])
+    to_color = lambda image: grayscale_to_color(image, violet, coral)
+
+    grayscale_random_noise = lambda image: random_noise(image, min_color=[0], max_color=[255], amount=0.2)
+
     image = generate_number_image(args.number,
             merge_digits_function,
-            final_image_transformations=[center_function],
-            digit_wise_transformations=[])
+            final_image_transformations=[center_function, to_color, random_noise],
+            digit_wise_transformations=[rotato])
 
     image = image / 255
-    utility.save_to_dir(image, args.number)
 
     import matplotlib.pyplot as plt
     plt.imshow(image)

@@ -8,14 +8,17 @@ Atleast 12MB of RAM for the mnist dataset to fit
 ##Instructions
 
 sudo pip3 install pew
-pew new --python=pypy -i numpy -i matplotlib -i scikit-image -i termcolor data_augmentation
+pew new --python=pypy -i numpy -i matplotlib -i scipy -i scikit-image -i termcolor data_augmentation
 sudo apt install python3-tk
 
 #Run
 ./single_image_generator.py --number 31456 --min_max 5 15 --image_width 150
 
 Should display an image of the number 31456 with the format 28x150 each digit
-is separated by 2 to 15 pixels. Have fun tweaking the parameters.
+is separated by 5 to 15 pixels.
+Image will be saved under:
+data/generated_numbers/5_digits_numbers/31456_[1-9][0-9]*.png
+Have fun tweaking the parameters.
 
 
 ##Tests
