@@ -13,7 +13,7 @@ def horizontal_merge(digit_images, min_dist, max_dist, background_color=0):
                                         digit_images.shape[0] - 1)
 
     height = digit_images.shape[1]
-    output = np.empty((28, 0))
+    output = np.empty((height, 0))
 
     for digit, bb, space in zip_longest(digit_images, bounding_boxes,
                                         digit_distances, fillvalue=0):
