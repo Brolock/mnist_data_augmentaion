@@ -32,6 +32,19 @@ pew new --python=pypy -i numpy -i matplotlib -i scipy -i scikit-image -i termcol
 sudo apt install python3-tk
 ```
 
+## Testing
+
+Simply run
+
+```
+./test.py
+```
+
+The test: "test_generate_batch_numbers" takes from 10 to 30 seconds depending on your CPU
+
+Will take even more time if this is the first time you run anything as it downloads mnist
+
+
 ## Examples
 
 From the command line execute:
