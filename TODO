@@ -1,3 +1,4 @@
 Have an option not to select twice the same image number
 Use biggest connected component instead of cheaking for first non black pixel on left/right top/bottom
 Fix the usage of np array when its not needed
+Multi core image generation
