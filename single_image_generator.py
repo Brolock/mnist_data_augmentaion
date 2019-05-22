@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import argparse
+import matplotlib.pyplot as plt
 
 from generate_number_image import generate_number_image
 from digits_merge import optimal_horizontal_merge
@@ -34,6 +35,8 @@ if __name__ == "__main__":
                              "pixels between two digits")
     parser.add_argument("--image_width",
                         help="The width of the resulting image in pixels")
+    parser.add_argument("--no_display", action="store_true",
+                        help="Display image generated in matplotlib")
 
     args = parser.parse_args()
 
@@ -43,6 +46,6 @@ if __name__ == "__main__":
 
     utility.save_to_dir(image, args.number)
 
-    import matplotlib.pyplot as plt
-    plt.imshow(image)
-    plt.show()
+    if not args.no_display:
+        plt.imshow(image)
+        plt.show()
