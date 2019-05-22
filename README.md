@@ -28,7 +28,7 @@ Those commands should get you the modules necessary for the project to work
 ```
 sudo apt install python3
 sudo pip3 install pew
-pew new --python=pypy -i numpy -i matplotlib -i scipy -i scikit-image -i termcolor data_augmentation
+pew new --python=python3 -i numpy -i matplotlib -i scipy -i scikit-image -i termcolor data_augmentation
 sudo apt install python3-tk
 ```
 
