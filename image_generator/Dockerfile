@@ -12,7 +12,7 @@ FROM python:3-slim
 ARG workdir=/usr/src/data-augmentation
 WORKDIR ${workdir}
 
-VOLUME ${workdir}/data/generated_numbers
+VOLUME /data/generated_numbers
 
 COPY --from=dataset *.gz data/
 COPY . .
