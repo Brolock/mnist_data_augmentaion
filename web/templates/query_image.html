@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 <body>
+<div class="container">
     <h1>Welcome to my great SINGLE image generator</h1>
     <form action={{ url_for('single_image') }} method="POST">
-        User ID:<br>
-        <input type="number" name="userid" required>
-        </br>
+      <label for="user_id">User ID:</label>
+        <input class="form-control" type="number" name="user_id" id="user_id" required><br>
 
-        Number to produce:<br>
-        <input type="number" name="number" maxlength="40" size="40" required>
-        </br>
+        <label for="number">Number to produce:</label>
+        <input class="form-control" type="number" name="number" id="number" min="0" required><br>
 
-        <input type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Submit">
     </form>
+</div>
 </body>
 </html>
