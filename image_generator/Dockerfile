@@ -14,13 +14,13 @@ WORKDIR ${workdir}
 
 VOLUME ${workdir}/data/generated_numbers
 
-RUN pip install numpy matplotlib scipy scikit-image termcolor
+COPY --from=dataset *.gz data/
+COPY . .
+
+RUN pip install -r requirements.txt
 
 RUN ln -s ${workdir}/batch_image_generator.py /usr/bin/batch_image_generator \
     && \
     ln -s ${workdir}/single_image_generator.py /usr/bin/single_image_generator
-
-COPY --from=dataset *.gz data/
-COPY . .
 
 CMD ["single_image_generator", "--number", "1337", "--min_max", "5", "15", "--image_width", "150", "--no_display"]
